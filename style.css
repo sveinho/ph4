@@ -195,19 +195,17 @@ mark {
   color: #334155;
 }
 
-/* NYTT: Korrekt formatering av ekte Markdown-lister (ul/li) */
-.full-content ul,
-.identification-content ul,
-.authority-content ul {
-  margin: 0 0 1em 0;
+/* Sørger for pen formatering av Markdown-lister direkte i hovedteksten */
+.full-content ul {
+  margin: 15px 0;
   padding-left: 20px;
 }
 
-.full-content li,
-.identification-content li,
-.authority-content li {
-  margin-bottom: 6px;
+.full-content li {
+  margin-bottom: 8px;
+  line-height: 1.6;
 }
+
 
 .full-content li:last-child,
 .identification-content li:last-child,

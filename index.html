@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Format Knowledge Base</title>
+  <!-- Kobler til det rene stilarket ditt -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- NYTT: Henter Marked-biblioteket for å parse .md-filer live i nettleseren -->
+  <script src="https://jsdelivr.net"></script>
+</head>
+<body>
+
+  <h1>Nice to know about file formats (PoC)</h1>
+
+  <!-- Sentralt Søkefelt (Eneste inngangsport til kunnskapsbasen) -->
+  <div class="search-wrapper">
+    <input type="text" id="searchInput" placeholder="Search formats by title or extension (e.g., PNG, .png)..." autocomplete="off">
+    <button id="resetSearchBtn" class="invisible">✕</button>
+  </div>
+  
+  <!-- Dynamisk tilbakemelding og resultatbeholder -->
+  <p id="searchCounter">Loading registry index...</p>
+  <div id="articlesContainer"></div>
+  <div id="noResults" class="hidden"><h3>No matching formats found.</h3></div>
+
+  <!-- Beholder for "Last mer"-funksjonen -->
+  <div id="loadMoreWrapper" class="hidden">
+    <button id="loadMoreBtn">Load more formats</button>
+  </div>
+
+  <!-- Execution Script Connection -->
+  <script src="script.js"></script>
+</body>
+</html>

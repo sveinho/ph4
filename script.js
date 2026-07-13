@@ -152,11 +152,13 @@ document.addEventListener('DOMContentLoaded', function() {
     
     renderArticles();
   }
-  // Hjelpefunksjon som splitter Markdown inn i dine eksisterende CSS-bokser
+  // Hjelpefunksjon som splitter Markdown inn i dine eksisterende CSS-bokser ved hjelp av Markdown-it
   function parseMarkdownSections(mdText) {
     if (!mdText) return { contentHTML: 'Loading details...', idHTML: '', authHTML: '' };
 
-    // Standard overskrifter som bidragsytere bruker i .md-filene
+    // Initialiser markdown-it lokalt fra window-objektet
+    const md = window.markdownit ? window.markdownit() : null;
+
     const idHeader = '### Format Identification';
     const authHeader = '### Authority Information';
 
@@ -164,21 +166,17 @@ document.addEventListener('DOMContentLoaded', function() {
     let idMarkdown = '';
     let authMarkdown = '';
 
-    // Finn ut hvor de ulike seksjonene starter i teksten
     const idIdx = mdText.indexOf(idHeader);
     const authIdx = mdText.indexOf(authHeader);
 
-    // Sorter indeksene for å klippe ut teksten i riktig rekkefølge
     const sections = [
       { name: 'id', index: idIdx, header: idHeader },
       { name: 'auth', index: authIdx, header: authHeader }
     ].filter(s => s.index !== -1).sort((a, b) => a.index - b.index);
 
     if (sections.length > 0) {
-      // Hovedinnholdet er alt frem til den første spesifikke overskriften
       contentMarkdown = mdText.substring(0, sections[0].index).trim();
 
-      // Klipp ut de resterende seksjonene basert på funnet rekkefølge
       for (let i = 0; i < sections.length; i++) {
         const current = sections[i];
         const next = sections[i + 1];
@@ -192,11 +190,11 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
 
-    // Bruk Marked.js til å gjøre om rå Markdown til ferdig, proff HTML
+    // Bruk markdown-it til å rendre tekst hvis biblioteket er lastet inn
     return {
-      contentHTML: window.marked ? window.marked.parse(contentMarkdown) : contentMarkdown,
-      idHTML: idMarkdown && window.marked ? window.marked.parse(idMarkdown) : '',
-      authHTML: authMarkdown && window.marked ? window.marked.parse(authMarkdown) : ''
+      contentHTML: md ? md.render(contentMarkdown) : contentMarkdown,
+      idHTML: idMarkdown && md ? md.render(idMarkdown) : '',
+      authHTML: authMarkdown && md ? md.render(authMarkdown) : ''
     };
   }
 

@@ -233,19 +233,21 @@ mark {
 }
 
 .close-article-btn {
-  margin-top: 20px;
-  padding: 8px 16px;
-  background-color: #64748b;
-  color: white;
-  border: none;
+  background-color: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 500;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 0.9rem;
-  transition: background-color 0.2s;
+  margin-top: 20px;
+  transition: all 0.2s;
 }
 
 .close-article-btn:hover {
-  background-color: #475569;
+  background-color: #e2e8f0;
+  color: #1e293b;
 }
 
 /* Beholderen som sentrerer "Last mer"-knappen */

@@ -152,50 +152,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     renderArticles();
   }
-  // Hjelpefunksjon som splitter Markdown inn i dine eksisterende CSS-bokser ved hjelp av Markdown-it
-  function parseMarkdownSections(mdText) {
-    if (!mdText) return { contentHTML: 'Loading details...', idHTML: '', authHTML: '' };
-
-    const md = window.markdownit ? window.markdownit() : null;
-
-    const idHeader = '### Format Identification';
-    const authHeader = '### Authority Information';
-
-    let contentMarkdown = mdText;
-    let idMarkdown = '';
-    let authMarkdown = '';
-
-    const idIdx = mdText.indexOf(idHeader);
-    const authIdx = mdText.indexOf(authHeader);
-
-    const sections = [
-      { name: 'id', index: idIdx, header: idHeader },
-      { name: 'auth', index: authIdx, header: authHeader }
-    ].filter(s => s.index !== -1).sort((a, b) => a.index - b.index);
-
-    if (sections.length > 0) {
-      contentMarkdown = mdText.substring(0, sections.index).trim();
-
-      for (let i = 0; i < sections.length; i++) {
-        const current = sections[i];
-        const next = sections[i + 1];
-        const start = current.index + current.header.length;
-        const end = next ? next.index : mdText.length;
-        
-        const sectionText = mdText.substring(start, end).trim();
-
-        if (current.name === 'id') idMarkdown = sectionText;
-        if (current.name === 'auth') authMarkdown = sectionText;
-      }
-    }
-
-    return {
-      contentHTML: md ? md.render(contentMarkdown) : contentMarkdown,
-      idHTML: idMarkdown && md ? md.render(idMarkdown) : '',
-      authHTML: authMarkdown && md ? md.render(authMarkdown) : ''
-    };
-  }
-
   // Håndterer opptegning og begrensning av treff (Slice)
   function renderArticles() {
     const searchWords = searchQuery.split(' ').filter(Boolean);
@@ -222,15 +178,15 @@ document.addEventListener('DOMContentLoaded', function() {
         `<span class="badge status-${tag.toLowerCase().trim()}">${tag}</span>`
       ).join(' ');
 
-      // NYTT: Lagt til <button class="share-btn"> ved siden av lukkeknappen
+      // RENDERING: Hele Markdown-filen tegnes nå i én samlet flyt uten oppsplitting
       let expandedHTML = '';
       if (isExpanded) {
-        const parsed = parseMarkdownSections(article.markdownContent);
+        const md = window.markdownit ? window.markdownit() : null;
+        const htmlContent = article.markdownContent && md ? md.render(article.markdownContent) : 'Loading details...';
+
         expandedHTML = `
           <div class="full-content">
-            <div>${parsed.contentHTML}</div>
-            ${parsed.idHTML ? `<div class="identification-content"><h4>Format Identification</h4>${parsed.idHTML}</div>` : ''}
-            ${parsed.authHTML ? `<div class="authority-content"><h4>Authority Information</h4>${parsed.authHTML}</div>` : ''}
+            <div>${htmlContent}</div>
             <button class="share-btn" data-id="${article.id}">Copy share link 🔗</button>
             <button class="close-article-btn">Close description ✕</button>
           </div>
@@ -270,7 +226,6 @@ document.addEventListener('DOMContentLoaded', function() {
     articlesContainer.querySelectorAll('.filterable').forEach(articleEl => {
       
       articleEl.addEventListener('click', async function(e) {
-        // Stopper klikkeventet om man trykker på lukkeknappen ELLER deleknappen
         if (e.target.classList.contains('close-article-btn') || e.target.classList.contains('share-btn')) return;
 
         const articleId = this.dataset.id;
@@ -307,22 +262,17 @@ document.addEventListener('DOMContentLoaded', function() {
         if (newRenderedEl) newRenderedEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
       });
 
-      // NYTT: Hendelseslytter for "Copy share link"-knappen
       const shareBtn = articleEl.querySelector('.share-btn');
       if (shareBtn) {
         shareBtn.addEventListener('click', function(e) {
-          e.stopPropagation(); // Hindrer kortet i å lukke seg
+          e.stopPropagation(); 
           const articleId = this.dataset.id;
-          
-          // Generer den fulle nettadressen (f.eks. https://minside.no)
           const shareUrl = `${window.location.origin}${window.location.pathname}?id=${articleId}`;
           
-          // Kopier til utklippstavlen
           navigator.clipboard.writeText(shareUrl).then(() => {
             this.textContent = 'Link copied! ✔';
             this.classList.add('copied');
             
-            // Endre teksten tilbake etter 2 sekunder
             setTimeout(() => {
               this.textContent = 'Copy share link 🔗';
               this.classList.remove('copied');

@@ -289,3 +289,29 @@ mark {
 .invisible { 
   visibility: hidden; 
 }
+
+/* Stil for kopieringsknappen */
+.share-btn {
+  background-color: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-right: 10px;
+  transition: all 0.2s;
+}
+
+.share-btn:hover {
+  background-color: #e2e8f0;
+  color: #1e293b;
+}
+
+.share-btn.copied {
+  background-color: #10b981;
+  color: white;
+  border-color: #10b981;
+}

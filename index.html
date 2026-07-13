@@ -6,7 +6,7 @@
   <title>File Format Knowledge Base</title>
   <!-- Kobler til det rene stilarket ditt -->
   <link rel="stylesheet" href="style.css">
-  <!-- Henter den lokale filen du nettopp lastet ned i bakgrunnen -->
+  <!-- Henter den lokale filen i bakgrunnen uten å blokkere visningen -->
   <script src="markdown-it.min.js" defer></script>
   <script src="script.js" defer></script>
 </head>
@@ -14,15 +14,34 @@
 
   <h1>Nice to know about file formats (PoC)</h1>
 
-  <!-- Sentralt Søkefelt (Eneste inngangsport til kunnskapsbasen) -->
+  <!-- Sentralt Søkefelt -->
   <div class="search-wrapper">
     <input type="text" id="searchInput" placeholder="Search formats by title or extension (e.g., PNG, .png)..." autocomplete="off">
     <button id="resetSearchBtn" class="invisible">✕</button>
   </div>
   
-  <!-- Dynamisk tilbakemelding og resultatbeholder -->
+  <!-- Status og tilbakemelding -->
   <p id="searchCounter">Loading registry index...</p>
-  <div id="articlesContainer"></div>
+  
+  <!-- Resultatbeholder med midlertidig Skeleton UI -->
+  <div id="articlesContainer">
+    <div class="skeleton-card">
+      <div class="skeleton-title"></div>
+      <div class="skeleton-meta"></div>
+      <div class="skeleton-text"></div>
+    </div>
+    <div class="skeleton-card">
+      <div class="skeleton-title"></div>
+      <div class="skeleton-meta"></div>
+      <div class="skeleton-text"></div>
+    </div>
+    <div class="skeleton-card">
+      <div class="skeleton-title"></div>
+      <div class="skeleton-meta"></div>
+      <div class="skeleton-text"></div>
+    </div>
+  </div>
+  
   <div id="noResults" class="hidden"><h3>No matching formats found.</h3></div>
 
   <!-- Beholder for "Last mer"-funksjonen -->

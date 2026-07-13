@@ -156,7 +156,6 @@ document.addEventListener('DOMContentLoaded', function() {
   function parseMarkdownSections(mdText) {
     if (!mdText) return { contentHTML: 'Loading details...', idHTML: '', authHTML: '' };
 
-    // Initialiser markdown-it lokalt fra window-objektet
     const md = window.markdownit ? window.markdownit() : null;
 
     const idHeader = '### Format Identification';
@@ -175,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function() {
     ].filter(s => s.index !== -1).sort((a, b) => a.index - b.index);
 
     if (sections.length > 0) {
-      contentMarkdown = mdText.substring(0, sections[0].index).trim();
+      contentMarkdown = mdText.substring(0, sections.index).trim();
 
       for (let i = 0; i < sections.length; i++) {
         const current = sections[i];
@@ -190,7 +189,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
 
-    // Bruk markdown-it til å rendre tekst hvis biblioteket er lastet inn
     return {
       contentHTML: md ? md.render(contentMarkdown) : contentMarkdown,
       idHTML: idMarkdown && md ? md.render(idMarkdown) : '',
@@ -224,7 +222,7 @@ document.addEventListener('DOMContentLoaded', function() {
         `<span class="badge status-${tag.toLowerCase().trim()}">${tag}</span>`
       ).join(' ');
 
-      // Hvis kortet er utvidet, parser vi Markdown-innholdet inn i de riktige boksene
+      // NYTT: Lagt til <button class="share-btn"> ved siden av lukkeknappen
       let expandedHTML = '';
       if (isExpanded) {
         const parsed = parseMarkdownSections(article.markdownContent);
@@ -233,6 +231,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div>${parsed.contentHTML}</div>
             ${parsed.idHTML ? `<div class="identification-content"><h4>Format Identification</h4>${parsed.idHTML}</div>` : ''}
             ${parsed.authHTML ? `<div class="authority-content"><h4>Authority Information</h4>${parsed.authHTML}</div>` : ''}
+            <button class="share-btn" data-id="${article.id}">Copy share link 🔗</button>
             <button class="close-article-btn">Close description ✕</button>
           </div>
         `;
@@ -266,35 +265,34 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // Henter den eksterne .md-filen i stedet for .json ved klikk
+  // Henter den eksterne .md-filen og håndterer deleknapp
   function attachArticleClickEvents() {
     articlesContainer.querySelectorAll('.filterable').forEach(articleEl => {
       
       articleEl.addEventListener('click', async function(e) {
-        if (e.target.classList.contains('close-article-btn')) return;
+        // Stopper klikkeventet om man trykker på lukkeknappen ELLER deleknappen
+        if (e.target.classList.contains('close-article-btn') || e.target.classList.contains('share-btn')) return;
 
         const articleId = this.dataset.id;
         const targetArticle = allArticles.find(a => a.id === articleId);
 
         if (activeArticleId === articleId) {
           activeArticleId = null;
-          history.pushState({}, '', window.location.pathname); // Fjern id fra URL
+          history.pushState({}, '', window.location.pathname); 
           filterArticles(false);
           return;
         }
 
         activeArticleId = articleId;
-        history.pushState({id: articleId}, '', `?id=${articleId}`); // Legg til id i URL
+        history.pushState({id: articleId}, '', `?id=${articleId}`); 
         filterArticles(false);
 
-        // Hent .md-filen fra mappen 'articles/' om den ikke allerede ligger i minnet
         if (targetArticle && !targetArticle.markdownContent) {
           try {
             const res = await fetch(`articles/${articleId}.md`);
             if (!res.ok) throw new Error('Markdown file not found');
             const mdText = await res.text();
             
-            // Lagre i minnet (Cache)
             targetArticle.markdownContent = mdText;
             filterArticles(false);
           } catch (err) {
@@ -309,12 +307,38 @@ document.addEventListener('DOMContentLoaded', function() {
         if (newRenderedEl) newRenderedEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
       });
 
+      // NYTT: Hendelseslytter for "Copy share link"-knappen
+      const shareBtn = articleEl.querySelector('.share-btn');
+      if (shareBtn) {
+        shareBtn.addEventListener('click', function(e) {
+          e.stopPropagation(); // Hindrer kortet i å lukke seg
+          const articleId = this.dataset.id;
+          
+          // Generer den fulle nettadressen (f.eks. https://minside.no)
+          const shareUrl = `${window.location.origin}${window.location.pathname}?id=${articleId}`;
+          
+          // Kopier til utklippstavlen
+          navigator.clipboard.writeText(shareUrl).then(() => {
+            this.textContent = 'Link copied! ✔';
+            this.classList.add('copied');
+            
+            // Endre teksten tilbake etter 2 sekunder
+            setTimeout(() => {
+              this.textContent = 'Copy share link 🔗';
+              this.classList.remove('copied');
+            }, 2000);
+          }).catch(err => {
+            console.error('Could not copy link: ', err);
+          });
+        });
+      }
+
       const closeBtn = articleEl.querySelector('.close-article-btn');
       if (closeBtn) {
         closeBtn.addEventListener('click', function(e) {
           e.stopPropagation();
           activeArticleId = null;
-          history.pushState({}, '', window.location.pathname); // Fjern id fra URL
+          history.pushState({}, '', window.location.pathname); 
           filterArticles(false);
         });
       }
@@ -334,7 +358,7 @@ document.addEventListener('DOMContentLoaded', function() {
     searchInput.value = ''; 
     searchQuery = ''; 
     activeArticleId = null;
-    history.pushState({}, '', window.location.pathname); // Tøm URL ved nullstilling
+    history.pushState({}, '', window.location.pathname); 
     if (resetBtn) resetBtn.classList.add('invisible');
     filterArticles(true);
   }

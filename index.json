@@ -1,0 +1,93 @@
+[
+  {
+    "id": "pdf-a",
+    "discipline": "general",
+    "title": "PDF/A (Portable Document Format Archive)",
+    "abstract": "An ISO-standardized version of PDF specialized for the long-term digital preservation of electronic documents.",
+    "tags": ["recommendable"]
+  },
+  {
+    "id": "xml",
+    "discipline": "general",
+    "title": "XML (Extensible Markup Language)",
+    "abstract": "A flexible, human-readable text format used to define and structure complex datasets and hierarchical information.",
+    "tags": ["recommendable"]
+  },
+  {
+    "id": "tiff",
+    "discipline": "general",
+    "title": "TIFF (Tagged Image File Format)",
+    "abstract": "A flexible, industry-standard raster format heavily utilized in professional archiving and high-end photography.",
+    "tags": ["recommendable"]
+  },
+  {
+    "id": "tsv",
+    "discipline": "general",
+    "title": "TSV (Tab-Separated Values)",
+    "abstract": "A plain-text file format used for storing tabular data, separating values strictly with horizontal tabs.",
+    "tags": ["recommendable"]
+  },
+  {
+    "id": "png",
+    "discipline": "general",
+    "title": "PNG (Portable Network Graphics)",
+    "abstract": "A popular raster graphics format that utilizes lossless compression and supports alpha channel transparency.",
+    "tags": ["recommendable"]
+  },
+  {
+    "id": "jpeg",
+    "discipline": "general",
+    "title": "JPEG (Joint Photographic Experts Group)",
+    "abstract": "A widely-used lossy image format optimized for compressing continuous-tone photographic imagery.",
+    "tags": ["migrate"]
+  },
+  {
+    "id": "jpeg-2000",
+    "discipline": "general",
+    "title": "JPEG 2000 (Lossless Part 1 / Core Coding)",
+    "abstract": "An advanced image compression standard based on wavelet transform technology, offering both lossy and lossless coding pathways.",
+    "tags": ["recommendable"]
+  },
+  {
+    "id": "svg",
+    "discipline": "general",
+    "title": "SVG (Scalable Vector Graphics)",
+    "abstract": "An XML-based vector image format used for defining two-dimensional graphics with support for interactivity and animation.",
+    "tags": ["debatable"]
+  },
+  {
+    "id": "psd",
+    "discipline": "general",
+    "title": "PSD (Adobe Photoshop Document)",
+    "abstract": "A proprietary raster and vector graphics format developed by Adobe to preserve advanced image editing states and project layers.",
+    "tags": ["debatable"]
+  },
+  {
+    "id": "csv",
+    "discipline": "general",
+    "title": "CSV (Comma-Separated Values)",
+    "abstract": "A widely used plain-text format for tabular data, using commas to separate field values.",
+    "tags": ["recommendable"]
+  },
+  {
+    "id": "json",
+    "discipline": "general",
+    "title": "JSON (JavaScript Object Notation)",
+    "abstract": "A lightweight data-interchange format that is easy for humans to read and write, and easy for machines to parse.",
+    "tags": ["recommendable"]
+  },
+  {
+    "id": "mp3",
+    "discipline": "audio",
+    "title": "MP3 (MPEG-1 Audio Layer III)",
+    "abstract": "A digital audio format using lossy data compression, widely used for music storage and streaming.",
+    "tags": ["migrate"]
+  },
+  {
+    "id": "mp4",
+    "discipline": "video",
+    "title": "MP4 (MPEG-4 Part 14)",
+    "abstract": "A digital multimedia container format most commonly used to store video, audio, and subtitles.",
+    "tags": ["recommendable"]
+  }
+]

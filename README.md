@@ -1,1 +1,1 @@
-information in markdown files, one for each file format, index.json as searchable front, index.html and script.js, as well as styling in style.css. 
+information in markdown files, one for each file format in the folder articles, index.json as searchable and presentable front (first 10 formats shown), index.html and script.js, as well as styling in style.css. At this point, no discipline specific file formats. 

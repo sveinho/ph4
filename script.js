@@ -259,7 +259,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         const newRenderedEl = articlesContainer.querySelector(`[data-id="${articleId}"]`);
-        if (newRenderedEl) newRenderedEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        if (newRenderedEl) newRenderedEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
 
       const shareBtn = articleEl.querySelector('.share-btn');

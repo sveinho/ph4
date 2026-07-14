@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Rull pent ned til det åpnede kortet
         setTimeout(() => {
           const el = articlesContainer.querySelector(`[data-id="${articleId}"]`);
-          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }, 100);
       } catch (err) {
         console.error("Could not load direct link markdown:", err);

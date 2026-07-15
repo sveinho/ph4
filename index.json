@@ -163,14 +163,14 @@
   {
     "id": "jpeg",
     "discipline": "general",
-    "title": "JPEG (Joint Photographic Experts Group)",
+    "title": "JPEG (Alt: JPG )(Joint Photographic Experts Group)",
     "abstract": "A widely-used lossy image format optimized for compressing continuous-tone photographic imagery.",
     "tags": ["migrate"]
   },
   {
     "id": "jpeg-2000",
     "discipline": "general",
-    "title": "JPEG 2000 (Lossless Part 1 / Core Coding)",
+    "title": "JPEG 2000 (Alt: JPG )(Lossless Part 1 / Core Coding)",
     "abstract": "An advanced image compression standard based on wavelet transform technology, offering both lossy and lossless coding pathways.",
     "tags": ["recommendable"]
   },

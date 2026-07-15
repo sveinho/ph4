@@ -10,4 +10,4 @@ Debatable: Formats that have significant limitations or risks associated with pr
 
 The search function: when you have entered three letters, the search begins automatically. Please search for file extensions for efficiency (like PNG, tiff, PDF etc.)
 
-Te tag "Relevance:" is experimental at this stage. 
+The tag "Relevance:" is experimental at this stage. 

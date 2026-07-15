@@ -14,6 +14,41 @@
     "tags": ["recommendable"]
   },
    {
+    "id": "epub",
+    "discipline": "general",
+    "title": "EPUB (Electronic Publication)",
+    "abstract": "An XML-based, open standard e-book file format developed for reflowable digital text and responsive electronic publications.",
+    "tags": ["recommendable"]
+  },
+  {
+    "id": "pptx",
+    "discipline": "general",
+    "title": "PPTX (Office Open XML Presentation)",
+    "abstract": "A zipped, XML-based presentation slide deck format developed by Microsoft for business and educational workflows.",
+    "tags": ["migrate"]
+  },
+  {
+    "id": "xcf",
+    "discipline": "general",
+    "title": "XCF (Experimental Computing Facility)",
+    "abstract": "The native, open-source layered image format used by GIMP to preserve full image design and layer histories without proprietary restrictions.",
+    "tags": ["recommendable"]
+  },
+  {
+    "id": "dwg",
+    "discipline": "general",
+    "title": "DWG (Drawing)",
+    "abstract": "A highly proprietary binary format developed by Autodesk for 2D and 3D CAD design data, suffering from high version obsolescence risks.",
+    "tags": ["migrate"]
+  },
+  {
+    "id": "dxf",
+    "discipline": "general",
+    "title": "DXF (Drawing Exchange Format)",
+    "abstract": "A tagged, text-based data format developed by Autodesk to enable vector geometry and CAD interoperability across different systems.",
+    "tags": ["recommendable"]
+  },
+  {
     "id": "docx",
     "discipline": "general",
     "title": "DOCX (Office Open XML Document)",

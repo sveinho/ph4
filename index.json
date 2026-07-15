@@ -13,6 +13,97 @@
     "abstract": "A flexible, human-readable text format used to define and structure complex datasets and hierarchical information.",
     "tags": ["recommendable"]
   },
+   {
+    "id": "docx",
+    "discipline": "general",
+    "title": "DOCX (Office Open XML Document)",
+    "abstract": "A zipped, XML-based word processing document format standard developed by Microsoft for editable administrative files.",
+    "tags": ["migrate"]
+  },
+  {
+    "id": "wav",
+    "discipline": "audio",
+    "title": "WAV/BWF (Waveform Audio File Format)",
+    "abstract": "An uncompressed audio format utilized as the absolute baseline master standard for bit-perfect sound preservation.",
+    "tags": ["recommendable"]
+  },
+  {
+    "id": "mkv",
+    "discipline": "video",
+    "title": "MKV (Matroska Video Container)",
+    "abstract": "An open-standard multimedia container designed to hold an unlimited number of video, audio, and subtitle tracks inside a single file.",
+    "tags": ["recommendable"]
+  },
+  {
+    "id": "siard",
+    "discipline": "general",
+    "title": "SIARD (Software Independent Archiving of Relational Databases)",
+    "abstract": "An open, XML-based archive format standardized for the long-term, non-operational preservation of relational database structures.",
+    "tags": ["recommendable"]
+  },
+  {
+    "id": "sql",
+    "discipline": "general",
+    "title": "SQL Data Dump (Structured Query Language)",
+    "abstract": "A plain-text script file containing sequential commands to reconstruct database schemas and records, prone to dialect variations.",
+    "tags": ["migrate"]
+  },
+  {
+    "id": "shp",
+    "discipline": "general",
+    "title": "SHP (Esri Shapefile)",
+    "abstract": "A legacy multi-file geospatial vector data format used for storing geometric locations and attribute information of geographic features.",
+    "tags": ["migrate"]
+  },
+  {
+    "id": "gpkg",
+    "discipline": "general",
+    "title": "GPKG (GeoPackage)",
+    "abstract": "An open, SQLite-based container for storing geospatial vector features, tile matrices, and attribute tables in a single file.",
+    "tags": ["recommendable"]
+  },
+  {
+    "id": "pdf",
+    "discipline": "general",
+    "title": "PDF (Portable Document Format - Standard)",
+    "abstract": "A versatile document format optimized for consumer distribution and layout retention, containing potentially unpredictable dynamic features.",
+    "tags": ["debatable"]
+  },
+  {
+    "id": "ods",
+    "discipline": "general",
+    "title": "ODS (OpenDocument Spreadsheet)",
+    "abstract": "An XML-based open-standard spreadsheet format used for graphical calculations, data grids, and charts without vendor lock-in.",
+    "tags": ["recommendable"]
+  },
+  {
+    "id": "html",
+    "discipline": "general",
+    "title": "HTML (HyperText Markup Language)",
+    "abstract": "The foundational text-based language of the web, excellent for electronic records but vulnerable to external asset dependency.",
+    "tags": ["debatable"]
+  },
+  {
+    "id": "xlsx",
+    "discipline": "general",
+    "title": "XLSX (Microsoft Excel Open XML Spreadsheet)",
+    "abstract": "A zipped, XML-based spreadsheet format standard developed by Microsoft for active calculations and enterprise data tracking.",
+    "tags": ["migrate"]
+  },
+  {
+    "id": "eml",
+    "discipline": "general",
+    "title": "EML (Electronic Mail Format)",
+    "abstract": "A plain-text standard architecture used to encapsulate a single email message alongside its metadata headers and binary attachments.",
+    "tags": ["recommendable"]
+  },
+  {
+    "id": "zip",
+    "discipline": "general",
+    "title": "ZIP Archive (Data Compression Container)",
+    "abstract": "A universally supported compression container used for bundling and transferring multi-file documentation packages in bulk.",
+    "tags": ["recommendable"]
+  },
   {
     "id": "tiff",
     "discipline": "general",

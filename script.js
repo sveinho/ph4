@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="article-header">
             <h2>${displayTitle}</h2>
             <div class="article-meta-inline">
-              <span class="badge discipline-badge">Discipline: ${disciplineValue}</span>
+              <span class="badge discipline-badge">Relevance: ${disciplineValue}</span>
               ${tagsHTML}
             </div>
           </div>

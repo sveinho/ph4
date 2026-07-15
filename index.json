@@ -78,7 +78,7 @@
   },
   {
     "id": "sql",
-    "discipline": "general",
+    "discipline": "code",
     "title": "SQL Data Dump (Structured Query Language)",
     "abstract": "A plain-text script file containing sequential commands to reconstruct database schemas and records, prone to dialect variations.",
     "tags": ["migrate"]
@@ -141,7 +141,7 @@
   },
   {
     "id": "tiff",
-    "discipline": "general",
+    "discipline": "images",
     "title": "TIFF (Tagged Image File Format)",
     "abstract": "A flexible, industry-standard raster format heavily utilized in professional archiving and high-end photography.",
     "tags": ["recommendable"]
@@ -155,7 +155,7 @@
   },
   {
     "id": "png",
-    "discipline": "general",
+    "discipline": "images",
     "title": "PNG (Portable Network Graphics)",
     "abstract": "A popular raster graphics format that utilizes lossless compression and supports alpha channel transparency.",
     "tags": ["recommendable"]
@@ -212,7 +212,7 @@
   {
     "id": "mp4",
     "discipline": "video",
-    "title": "MP4 (MPEG-4 Part 14)",
+    "title": "MP4 (MPEG-4 Part 14 for Video)",
     "abstract": "A digital multimedia container format most commonly used to store video, audio, and subtitles.",
     "tags": ["recommendable"]
   }
